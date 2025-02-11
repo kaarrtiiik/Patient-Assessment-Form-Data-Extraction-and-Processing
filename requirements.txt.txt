@@ -1,0 +1,7 @@
+requirements.txt
+
+pytesseract
+pdf2image
+Pillow
+json
+sqlite3

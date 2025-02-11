@@ -1,0 +1,15 @@
+database_schema.sql
+
+CREATE TABLE patients (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    date_of_birth TEXT NOT NULL
+);
+
+CREATE TABLE assessments (
+    id INTEGER PRIMARY KEY,
+    patient_id INTEGER NOT NULL,
+    assessment_date TEXT NOT NULL,
+    data TEXT NOT NULL,
+    FOREIGN KEY (patient_id) REFERENCES patients (id)
+);

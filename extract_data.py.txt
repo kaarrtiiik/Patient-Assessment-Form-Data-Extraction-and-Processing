@@ -1,0 +1,50 @@
+extract_data.py
+
+import pytesseract
+from PIL import Image
+import json
+import sqlite3
+
+# OCR Function
+def extract_text(image_path):
+    text = pytesseract.image_to_string(Image.open(image_path))
+    return text
+
+# JSON Function
+def create_json(data):
+    json_data = json.dumps(data)
+    return json_data
+
+# Database Function
+def store_data(data):
+    conn = sqlite3.connect('patient_data.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS patients
+                 (name text, date_of_birth text)''')
+    c.execute("INSERT INTO patients VALUES (?, ?)",
+               (data['patient']['name'], data['patient']['date_of_birth']))
+    conn.commit()
+    conn.close()
+
+# Main Function
+def main():
+    image_path = 'patient_form.jpg'  # Replace with your image path
+    text = extract_text(image_path)
+    data = {
+        'patient': {
+            'name': 'John Doe',  # Replace with extracted patient name
+            'date_of_birth': '1990-01-01'  # Replace with extracted date of birth
+        },
+        'assessments': [
+            {
+                'assessment_date': '2022-01-01',  # Replace with extracted assessment date
+                'data': text  # Replace with extracted text
+            }
+        ]
+    }
+    json_data = create_json(data)
+    store_data(data)
+    print(json_data)
+
+if __name__ == '__main__':
+    main()

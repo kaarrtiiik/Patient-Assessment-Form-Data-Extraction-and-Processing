@@ -1,0 +1,14 @@
+sample_output.json
+
+{
+    "patient": {
+        "name": "John Doe",
+        "date_of_birth": "1990-01-01"
+    },
+    "assessments": [
+        {
+            "assessment_date": "2022-01-01",
+            "data": "Extracted text from patient form"
+        }
+    ]
+}
