@@ -1,12 +1,12 @@
 README.md
 
-# Patient Assessment Form Data Extraction and Processing
+#Patient Assessment Form Data Extraction and Processing
 
-## Overview
+#Overview
 
 This project provides a Python-based solution for extracting text from scanned patient assessment forms (JPEG/PDF) using OCR, parsing and structuring the extracted data into JSON format, and storing the structured data in a SQL database.
 
-## Requirements
+#Requirements
 
 * Python 3.8+
 * `pytesseract` for OCR
@@ -15,7 +15,7 @@ This project provides a Python-based solution for extracting text from scanned p
 * `json` for JSON output
 * `sqlite3` for SQL database storage
 
-## Usage
+#Usage
 
 1. Install required libraries using `pip install -r requirements.txt`
 2. Run `extract_data.py` using `python extract_data.py`
